@@ -1,0 +1,7 @@
+╰─○ emulator -list-avds
+
+
+╰─○ emulator -avd Nexus_5_API_26     
+
+
+╰─○ npx react-native run-android    
