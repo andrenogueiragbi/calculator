@@ -13,18 +13,47 @@ import Button from './src/components/Button';
 import Display from './src/components/Display';
 
 
+const initialState = {
+  displayValue: '0',
+  clearDisplay: false,
+  operation: null,
+  values:[0,0],
+  current:0,
+}
+
+
 export default class App extends Component {
 
-  state ={
-    displayValue: '0',
-  }
+  state ={ ...initialState}
 
   addDigit = n =>{
-    this.setState({displayValue: n});
+    if(n === "." && this.state.displayValue.includes(".")){
+      return 
+    }
+
+    const clearDisplay = this.state.displayValue === "0" || this.state.clearDisplay
+    const currentValue = clearDisplay ? "" : this.state.displayValue
+    const displayValue = currentValue + n
+    this.setState({displayValue, clearDisplay:false})
+
+
+    if(n !== '.'){
+      const newValue = parseFloat(displayValue)
+      const values = [...this.state.values]
+      values[this.state.current] = newValue
+      this.setState({values})
+    }
+
+
   }
 
   clearMemory = () =>{
-    this.setState({displayValue:0})
+    this.setState({...initialState})
+  }
+  setOperation = operation =>{
+    if(this.state.current === 0){
+      this.setState({operation,current:1, clearDisplay:true})
+    }
   }
 
 
@@ -36,8 +65,7 @@ export default class App extends Component {
       <View style={styles.container}>
         <Display value={this.state.displayValue}></Display>
         <View style={styles.button}>
-          <Button buttonOne  label='AC' onClick={this.clearMemory} />
-          <Button buttonOne label='%' onClick={this.addDigit} />
+          <Button buttonDouble  label='AC' onClick={this.clearMemory} />
           <Button buttonOperation label='/' onClick={this.addDigit} />
           <Button label='7' onClick={this.addDigit} />
           <Button label='8' onClick={this.addDigit} />

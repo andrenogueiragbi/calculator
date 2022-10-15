@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         borderColor: "#888"
     },
     buttonDouble:{
-        width: Dimensions.get("window").width / 2,
+        width: Dimensions.get("window").width / 1.339,
 
     },
     buttonTriple:{

@@ -8,7 +8,7 @@ import {
 const styles = StyleSheet.create({
     display: {
         flex: 1,
-        padding: 20,
+        padding: 10,
         justifyContent: 'center',
         backgroundColor: 'rgba(0,0,0.6)',
         alignItems: "flex-end"
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     },
     credites: {
         color: "#fff",
-        fontSize: 15,
+        fontSize: 10,
         textAlign: "center",
         alignItems: "center",
         backgroundColor: "#000",
@@ -31,6 +31,10 @@ const styles = StyleSheet.create({
 
 
 });
+
+
+
+
 
 export default props =>
 
